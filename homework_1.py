@@ -33,3 +33,17 @@ def musiclist_stat(r):
     for tag in hhh:
         musit[tag['href'].strip('/song?id=')]=tag.text
     return musit
+A,B=[],[]
+D=musiclist_stat(bs)
+for u in D:
+    A.append(u)
+    B.append(D[u])
+def xiazai(a,b):
+    try:
+        song='http://music.163.com/song/media/outer/url?id=%s.mp3'%a
+        urllib.request.urlretrieve(song,'C:/Users/lenovo/Desktop/text/%s.mp3'%b)
+        print('下载完成，开始播放，等待，并聆听')
+    except KeyError:
+        print("不能下载哦")
+for y in A:
+    xiazai(y,B[A.index(y)])
