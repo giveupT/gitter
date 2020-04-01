@@ -47,3 +47,30 @@ def xiazai(a,b):
         print("不能下载哦")
 for y in A:
     xiazai(y,B[A.index(y)])
+fi=tk.Tk()
+fi.title("登陆界面")
+label_x=tk.Label(fi,text="用户名:")
+label_y=tk.Label(fi,text="密码:")
+textbox_1=tk.Text(fi,height=1,width=10)
+textbox_2=tk.Text(fi,height=1,width=10)
+button=tk.Button(fi,text="确认",command=lambda:querenbut(textbox_1,textbox_2))
+button_1=tk.Button(fi,text="退出",command=lambda:tuichu())
+fi.geometry('200x100+550+300')
+def querenbut(textbox_1,textbox_2):
+    a=textbox_1.get('0.1',tk.END)[:-1]
+    b=textbox_2.get('0.1',tk.END)[:-1]
+    if a==Name["A1"]["用户名"] and b==Name["A1"]["密码"]:
+        return fi.destroy(),wc()
+    elif a==Name["A2"]["用户名"] and b==Name["A2"]["密码"]:
+        return fi.destroy(),wc()
+    else:
+        return wr()
+def tuichu():
+    return fi.destroy()
+label_x.grid_configure(column=1,row=1,columnspan=1,rowspan=1)
+label_y.grid_configure(column=1,row=2,columnspan=1,rowspan=1)
+textbox_1.grid_configure(column=2,row=1,columnspan=1,rowspan=1)
+textbox_2.grid_configure(column=2,row=2,columnspan=1,rowspan=1)
+button.grid_configure(column=1,row=3,columnspan=1,rowspan=1)
+button_1.grid_configure(column=2,row=3,columnspan=1,rowspan=1)
+fi.mainloop()
