@@ -24,3 +24,12 @@ for i in S:
 ff=len(C)
 for e in range(0,ff):
     E[B[e]]=C[e]    #id对名称的字典
+gg= 'https://music.163.com/playlist?id=2819914042' 
+s = requests.session()
+bs = BeautifulSoup(s.get(gg).content, "lxml")
+def musiclist_stat(r):
+    musit={}    
+    hhh=r.find('ul',{'class':"f-hide"}).find_all('a')
+    for tag in hhh:
+        musit[tag['href'].strip('/song?id=')]=tag.text
+    return musit
